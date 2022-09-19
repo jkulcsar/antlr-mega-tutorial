@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Linq;
 using Xunit;
-using Antlr4.Runtime.Misc;
-using Antlr4.Runtime.Tree;
 using Antlr4.Runtime;
 using System.IO;
-using static AntlrTutorial.SpreadsheetParser;
-using Xunit.Abstractions;
 
 namespace AntlrTutorial
 {    
@@ -48,7 +43,7 @@ namespace AntlrTutorial
         {
             setup(value);
 
-            IdAtomExpContext context = parser.expression() as IdAtomExpContext;
+            SpreadsheetParser.IdAtomExpContext context = parser.expression() as SpreadsheetParser.IdAtomExpContext;
 
             CommonTokenStream ts = (CommonTokenStream)parser.InputStream;            
 
@@ -65,7 +60,7 @@ namespace AntlrTutorial
         {
             setup("A1");
 
-            IdAtomExpContext context = parser.expression() as IdAtomExpContext;
+            SpreadsheetParser.IdAtomExpContext context = parser.expression() as SpreadsheetParser.IdAtomExpContext;
 
             CommonTokenStream ts = (CommonTokenStream) parser.InputStream;            
 
@@ -78,7 +73,7 @@ namespace AntlrTutorial
         {
             setup("AB1");
 
-            IdAtomExpContext context = parser.expression() as IdAtomExpContext;
+            SpreadsheetParser.IdAtomExpContext context = parser.expression() as SpreadsheetParser.IdAtomExpContext;
 
             CommonTokenStream ts = (CommonTokenStream)parser.InputStream;
             ts.Seek(0);
@@ -92,7 +87,7 @@ namespace AntlrTutorial
         {
             setup("5^3^2");
 
-            PowerExpContext context = parser.expression() as PowerExpContext;
+            SpreadsheetParser.PowerExpContext context = parser.expression() as SpreadsheetParser.PowerExpContext;
 
             CommonTokenStream ts = (CommonTokenStream)parser.InputStream;   
 
@@ -108,7 +103,7 @@ namespace AntlrTutorial
         {
             setup("4^3^2");
 
-            PowerExpContext context = parser.expression() as PowerExpContext;
+            SpreadsheetParser.PowerExpContext context = parser.expression() as SpreadsheetParser.PowerExpContext;
 
             DoubleSpreadsheetVisitor visitor = new DoubleSpreadsheetVisitor();
             double result = visitor.VisitPowerExp(context);
@@ -121,7 +116,7 @@ namespace AntlrTutorial
         {
             setup("log(100)");
 
-            FunctionExpContext context = parser.expression() as FunctionExpContext;
+            SpreadsheetParser.FunctionExpContext context = parser.expression() as SpreadsheetParser.FunctionExpContext;
 
             DoubleSpreadsheetVisitor visitor = new DoubleSpreadsheetVisitor();
             double result = visitor.VisitFunctionExp(context);
@@ -134,7 +129,7 @@ namespace AntlrTutorial
         {
             setup("logga(100)");
 
-            FunctionExpContext context = parser.expression() as FunctionExpContext;
+            SpreadsheetParser.FunctionExpContext context = parser.expression() as SpreadsheetParser.FunctionExpContext;
 
             DoubleSpreadsheetVisitor visitor = new DoubleSpreadsheetVisitor();
             double result = visitor.VisitFunctionExp(context);
@@ -154,7 +149,7 @@ namespace AntlrTutorial
         {
             setup("log(5+6*7/8)");
 
-            ExpressionContext context = parser.expression();
+            SpreadsheetParser.ExpressionContext context = parser.expression();
 
             DoubleSpreadsheetVisitor visitor = new DoubleSpreadsheetVisitor();
             double result = visitor.Visit(context);            
