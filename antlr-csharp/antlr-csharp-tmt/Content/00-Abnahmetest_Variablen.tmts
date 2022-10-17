@@ -1,10 +1,12 @@
 //input Variabeln
+// TODO: input keyword is not yet supported - should it be>
 input string $String = ""
 input int $Int = 0
 input float $Float = 0
 input bool $Bool = false
 
 //output Variabeln
+// TODO: output keyword is not yet supported - should it be>
 output string $String_o = ""
 output int $Int_o = 0
 output float $Float_o = 0

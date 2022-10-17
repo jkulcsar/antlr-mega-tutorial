@@ -38,28 +38,41 @@ public partial class TruMarkTestScriptParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, WHILE=22, BOOL_OPERATOR=23, INTEGER=24, 
-		FLOAT=25, STRING=26, BOOL=27, NULL=28, WS=29, IDENTIFIER=30;
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, T__25=26, T__26=27, WHILE=28, IN=29, OUT=30, CALL=31, BOOL_OPERATOR=32, 
+		INTEGER=33, FLOAT=34, STRING=35, BOOL=36, NULL=37, WS=38, IDENTIFIER=39, 
+		FUNCTIONIDENTIFIER=40, HARDWAREMODULEIDENTIFIER=41, BlockComment=42, LineComment=43;
 	public const int
 		RULE_program = 0, RULE_line = 1, RULE_statement = 2, RULE_ifBlock = 3, 
-		RULE_elseIfBlock = 4, RULE_block = 5, RULE_whileBlock = 6, RULE_assignement = 7, 
-		RULE_functionCall = 8, RULE_expression = 9, RULE_multOp = 10, RULE_addOp = 11, 
-		RULE_compareOp = 12, RULE_boolOp = 13, RULE_constant = 14;
+		RULE_elseIfBlock = 4, RULE_block = 5, RULE_whileBlock = 6, RULE_assignment = 7, 
+		RULE_functionCall = 8, RULE_subProgramCall = 9, RULE_hardwareModuleCall = 10, 
+		RULE_commandCall = 11, RULE_expression = 12, RULE_multOp = 13, RULE_addOp = 14, 
+		RULE_compareOp = 15, RULE_boolOp = 16, RULE_constant = 17, RULE_variant_type_parameter = 18, 
+		RULE_variance_annotation = 19, RULE_typeSpecifier = 20, RULE_declaration = 21, 
+		RULE_initDeclaratorList = 22, RULE_declarationSpecifiers = 23, RULE_declarationSpecifier = 24, 
+		RULE_initDeclarator = 25, RULE_initializer = 26, RULE_declarator = 27, 
+		RULE_directDeclarator = 28;
 	public static readonly string[] ruleNames = {
 		"program", "line", "statement", "ifBlock", "elseIfBlock", "block", "whileBlock", 
-		"assignement", "functionCall", "expression", "multOp", "addOp", "compareOp", 
-		"boolOp", "constant"
+		"assignment", "functionCall", "subProgramCall", "hardwareModuleCall", 
+		"commandCall", "expression", "multOp", "addOp", "compareOp", "boolOp", 
+		"constant", "variant_type_parameter", "variance_annotation", "typeSpecifier", 
+		"declaration", "initDeclaratorList", "declarationSpecifiers", "declarationSpecifier", 
+		"initDeclarator", "initializer", "declarator", "directDeclarator"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "';'", "'if'", "'else'", "'{'", "'}'", "'='", "'('", "','", "')'", 
-		"'!'", "'*'", "'/'", "'%'", "'+'", "'-'", "'<'", "'>'", "'<='", "'>='", 
-		"'=='", "'!='", null, null, null, null, null, null, "'null'"
+		null, "'if'", "'else'", "'{'", "'}'", "'='", "'('", "','", "')'", "'['", 
+		"']'", "'!'", "'*'", "'/'", "'%'", "'+'", "'-'", "'<'", "'>'", "'<='", 
+		"'>='", "'=='", "'!='", "'void'", "'int'", "'float'", "'string'", "'bool'", 
+		null, "'in'", "'out'", "'call'", null, null, null, null, null, "'null'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, "WHILE", "BOOL_OPERATOR", 
-		"INTEGER", "FLOAT", "STRING", "BOOL", "NULL", "WS", "IDENTIFIER"
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, "WHILE", "IN", "OUT", "CALL", "BOOL_OPERATOR", 
+		"INTEGER", "FLOAT", "STRING", "BOOL", "NULL", "WS", "IDENTIFIER", "FUNCTIONIDENTIFIER", 
+		"HARDWAREMODULEIDENTIFIER", "BlockComment", "LineComment"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -132,21 +145,21 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 33;
+			State = 61;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << WHILE) | (1L << IDENTIFIER))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << WHILE) | (1L << CALL) | (1L << IDENTIFIER) | (1L << FUNCTIONIDENTIFIER))) != 0)) {
 				{
 				{
-				State = 30;
+				State = 58;
 				line();
 				}
 				}
-				State = 35;
+				State = 63;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 36;
+			State = 64;
 			Match(Eof);
 			}
 		}
@@ -199,27 +212,34 @@ public partial class TruMarkTestScriptParser : Parser {
 		LineContext _localctx = new LineContext(Context, State);
 		EnterRule(_localctx, 2, RULE_line);
 		try {
-			State = 41;
+			State = 69;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
+			case T__22:
+			case T__23:
+			case T__24:
+			case T__25:
+			case T__26:
+			case CALL:
 			case IDENTIFIER:
+			case FUNCTIONIDENTIFIER:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 38;
+				State = 66;
 				statement();
 				}
 				break;
-			case T__1:
+			case T__0:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 39;
+				State = 67;
 				ifBlock();
 				}
 				break;
 			case WHILE:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 40;
+				State = 68;
 				whileBlock();
 				}
 				break;
@@ -239,11 +259,17 @@ public partial class TruMarkTestScriptParser : Parser {
 	}
 
 	public partial class StatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public AssignementContext assignement() {
-			return GetRuleContext<AssignementContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationContext declaration() {
+			return GetRuleContext<DeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentContext assignment() {
+			return GetRuleContext<AssignmentContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public FunctionCallContext functionCall() {
 			return GetRuleContext<FunctionCallContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public SubProgramCallContext subProgramCall() {
+			return GetRuleContext<SubProgramCallContext>(0);
 		}
 		public StatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -275,24 +301,40 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 45;
+			State = 75;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
-			case 1:
+			switch (TokenStream.LA(1)) {
+			case T__22:
+			case T__23:
+			case T__24:
+			case T__25:
+			case T__26:
 				{
-				State = 43;
-				assignement();
+				State = 71;
+				declaration();
 				}
 				break;
-			case 2:
+			case IDENTIFIER:
 				{
-				State = 44;
+				State = 72;
+				assignment();
+				}
+				break;
+			case FUNCTIONIDENTIFIER:
+				{
+				State = 73;
 				functionCall();
 				}
 				break;
+			case CALL:
+				{
+				State = 74;
+				subProgramCall();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
-			State = 47;
-			Match(T__0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -347,20 +389,20 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 49;
-			Match(T__1);
-			State = 50;
+			State = 77;
+			Match(T__0);
+			State = 78;
 			expression(0);
-			State = 51;
+			State = 79;
 			block();
-			State = 54;
+			State = 82;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__2) {
+			if (_la==T__1) {
 				{
-				State = 52;
-				Match(T__2);
-				State = 53;
+				State = 80;
+				Match(T__1);
+				State = 81;
 				elseIfBlock();
 				}
 			}
@@ -413,20 +455,20 @@ public partial class TruMarkTestScriptParser : Parser {
 		ElseIfBlockContext _localctx = new ElseIfBlockContext(Context, State);
 		EnterRule(_localctx, 8, RULE_elseIfBlock);
 		try {
-			State = 58;
+			State = 86;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case T__3:
+			case T__2:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 56;
+				State = 84;
 				block();
 				}
 				break;
-			case T__1:
+			case T__0:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 57;
+				State = 85;
 				ifBlock();
 				}
 				break;
@@ -483,24 +525,24 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 60;
-			Match(T__3);
-			State = 64;
+			State = 88;
+			Match(T__2);
+			State = 92;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << WHILE) | (1L << IDENTIFIER))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << WHILE) | (1L << CALL) | (1L << IDENTIFIER) | (1L << FUNCTIONIDENTIFIER))) != 0)) {
 				{
 				{
-				State = 61;
+				State = 89;
 				line();
 				}
 				}
-				State = 66;
+				State = 94;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 67;
-			Match(T__4);
+			State = 95;
+			Match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -556,20 +598,20 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 69;
+			State = 97;
 			Match(WHILE);
-			State = 70;
+			State = 98;
 			expression(0);
-			State = 71;
+			State = 99;
 			block();
-			State = 74;
+			State = 102;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__2) {
+			if (_la==T__1) {
 				{
-				State = 72;
-				Match(T__2);
-				State = 73;
+				State = 100;
+				Match(T__1);
+				State = 101;
 				elseIfBlock();
 				}
 			}
@@ -587,46 +629,46 @@ public partial class TruMarkTestScriptParser : Parser {
 		return _localctx;
 	}
 
-	public partial class AssignementContext : ParserRuleContext {
+	public partial class AssignmentContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(TruMarkTestScriptParser.IDENTIFIER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
-		public AssignementContext(ParserRuleContext parent, int invokingState)
+		public AssignmentContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_assignement; } }
+		public override int RuleIndex { get { return RULE_assignment; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
-			if (typedListener != null) typedListener.EnterAssignement(this);
+			if (typedListener != null) typedListener.EnterAssignment(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
-			if (typedListener != null) typedListener.ExitAssignement(this);
+			if (typedListener != null) typedListener.ExitAssignment(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAssignement(this);
+			if (typedVisitor != null) return typedVisitor.VisitAssignment(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public AssignementContext assignement() {
-		AssignementContext _localctx = new AssignementContext(Context, State);
-		EnterRule(_localctx, 14, RULE_assignement);
+	public AssignmentContext assignment() {
+		AssignmentContext _localctx = new AssignmentContext(Context, State);
+		EnterRule(_localctx, 14, RULE_assignment);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 76;
+			State = 104;
 			Match(IDENTIFIER);
-			State = 77;
-			Match(T__5);
-			State = 78;
+			State = 105;
+			Match(T__4);
+			State = 106;
 			expression(0);
 			}
 		}
@@ -642,7 +684,7 @@ public partial class TruMarkTestScriptParser : Parser {
 	}
 
 	public partial class FunctionCallContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(TruMarkTestScriptParser.IDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FUNCTIONIDENTIFIER() { return GetToken(TruMarkTestScriptParser.FUNCTIONIDENTIFIER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
 		}
@@ -680,38 +722,270 @@ public partial class TruMarkTestScriptParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 80;
-			Match(IDENTIFIER);
-			State = 81;
-			Match(T__6);
-			State = 90;
+			State = 108;
+			Match(FUNCTIONIDENTIFIER);
+			State = 109;
+			Match(T__5);
+			State = 118;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__9) | (1L << INTEGER) | (1L << FLOAT) | (1L << STRING) | (1L << BOOL) | (1L << NULL) | (1L << IDENTIFIER))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__10) | (1L << CALL) | (1L << INTEGER) | (1L << FLOAT) | (1L << STRING) | (1L << BOOL) | (1L << NULL) | (1L << IDENTIFIER) | (1L << FUNCTIONIDENTIFIER) | (1L << HARDWAREMODULEIDENTIFIER))) != 0)) {
 				{
-				State = 82;
+				State = 110;
 				expression(0);
-				State = 87;
+				State = 115;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				while (_la==T__7) {
+				while (_la==T__6) {
 					{
 					{
-					State = 83;
-					Match(T__7);
-					State = 84;
+					State = 111;
+					Match(T__6);
+					State = 112;
 					expression(0);
 					}
 					}
-					State = 89;
+					State = 117;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
 				}
 			}
 
-			State = 92;
+			State = 120;
+			Match(T__7);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class SubProgramCallContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CALL() { return GetToken(TruMarkTestScriptParser.CALL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FUNCTIONIDENTIFIER() { return GetToken(TruMarkTestScriptParser.FUNCTIONIDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
+			return GetRuleContexts<ExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
+			return GetRuleContext<ExpressionContext>(i);
+		}
+		public SubProgramCallContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_subProgramCall; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterSubProgramCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitSubProgramCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSubProgramCall(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SubProgramCallContext subProgramCall() {
+		SubProgramCallContext _localctx = new SubProgramCallContext(Context, State);
+		EnterRule(_localctx, 18, RULE_subProgramCall);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 122;
+			Match(CALL);
+			State = 123;
+			Match(FUNCTIONIDENTIFIER);
+			State = 124;
+			Match(T__5);
+			State = 133;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__10) | (1L << CALL) | (1L << INTEGER) | (1L << FLOAT) | (1L << STRING) | (1L << BOOL) | (1L << NULL) | (1L << IDENTIFIER) | (1L << FUNCTIONIDENTIFIER) | (1L << HARDWAREMODULEIDENTIFIER))) != 0)) {
+				{
+				State = 125;
+				expression(0);
+				State = 130;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==T__6) {
+					{
+					{
+					State = 126;
+					Match(T__6);
+					State = 127;
+					expression(0);
+					}
+					}
+					State = 132;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			State = 135;
+			Match(T__7);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class HardwareModuleCallContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode HARDWAREMODULEIDENTIFIER() { return GetToken(TruMarkTestScriptParser.HARDWAREMODULEIDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
+			return GetRuleContexts<ExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
+			return GetRuleContext<ExpressionContext>(i);
+		}
+		public HardwareModuleCallContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_hardwareModuleCall; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterHardwareModuleCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitHardwareModuleCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitHardwareModuleCall(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public HardwareModuleCallContext hardwareModuleCall() {
+		HardwareModuleCallContext _localctx = new HardwareModuleCallContext(Context, State);
+		EnterRule(_localctx, 20, RULE_hardwareModuleCall);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 137;
+			Match(HARDWAREMODULEIDENTIFIER);
+			State = 138;
+			Match(T__5);
+			State = 147;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__10) | (1L << CALL) | (1L << INTEGER) | (1L << FLOAT) | (1L << STRING) | (1L << BOOL) | (1L << NULL) | (1L << IDENTIFIER) | (1L << FUNCTIONIDENTIFIER) | (1L << HARDWAREMODULEIDENTIFIER))) != 0)) {
+				{
+				State = 139;
+				expression(0);
+				State = 144;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==T__6) {
+					{
+					{
+					State = 140;
+					Match(T__6);
+					State = 141;
+					expression(0);
+					}
+					}
+					State = 146;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			State = 149;
+			Match(T__7);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CommandCallContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FUNCTIONIDENTIFIER() { return GetToken(TruMarkTestScriptParser.FUNCTIONIDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] STRING() { return GetTokens(TruMarkTestScriptParser.STRING); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING(int i) {
+			return GetToken(TruMarkTestScriptParser.STRING, i);
+		}
+		public CommandCallContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_commandCall; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterCommandCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitCommandCall(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCommandCall(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CommandCallContext commandCall() {
+		CommandCallContext _localctx = new CommandCallContext(Context, State);
+		EnterRule(_localctx, 22, RULE_commandCall);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 151;
+			Match(FUNCTIONIDENTIFIER);
+			State = 152;
 			Match(T__8);
+			State = 153;
+			Match(STRING);
+			State = 154;
+			Match(STRING);
+			State = 155;
+			Match(STRING);
+			State = 156;
+			Match(T__9);
 			}
 		}
 		catch (RecognitionException re) {
@@ -809,6 +1083,28 @@ public partial class TruMarkTestScriptParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class CommandCallExpressionContext : ExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public CommandCallContext commandCall() {
+			return GetRuleContext<CommandCallContext>(0);
+		}
+		public CommandCallExpressionContext(ExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterCommandCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitCommandCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCommandCallExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class IdentifierExpressionContext : ExpressionContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(TruMarkTestScriptParser.IDENTIFIER, 0); }
 		public IdentifierExpressionContext(ExpressionContext context) { CopyFrom(context); }
@@ -826,6 +1122,28 @@ public partial class TruMarkTestScriptParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIdentifierExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class SubProgramCallExpressionContext : ExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public SubProgramCallContext subProgramCall() {
+			return GetRuleContext<SubProgramCallContext>(0);
+		}
+		public SubProgramCallExpressionContext(ExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterSubProgramCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitSubProgramCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSubProgramCallExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -957,6 +1275,28 @@ public partial class TruMarkTestScriptParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class HardwareModuleCallExpressionContext : ExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public HardwareModuleCallContext hardwareModuleCall() {
+			return GetRuleContext<HardwareModuleCallContext>(0);
+		}
+		public HardwareModuleCallExpressionContext(ExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterHardwareModuleCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitHardwareModuleCallExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitHardwareModuleCallExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 
 	[RuleVersion(0)]
 	public ExpressionContext expression() {
@@ -968,22 +1308,22 @@ public partial class TruMarkTestScriptParser : Parser {
 		int _parentState = State;
 		ExpressionContext _localctx = new ExpressionContext(Context, _parentState);
 		ExpressionContext _prevctx = _localctx;
-		int _startState = 18;
-		EnterRecursionRule(_localctx, 18, RULE_expression, _p);
+		int _startState = 24;
+		EnterRecursionRule(_localctx, 24, RULE_expression, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 104;
+			State = 171;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,13,Context) ) {
 			case 1:
 				{
 				_localctx = new ConstantExpressionContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
 
-				State = 95;
+				State = 159;
 				constant();
 				}
 				break;
@@ -992,7 +1332,7 @@ public partial class TruMarkTestScriptParser : Parser {
 				_localctx = new IdentifierExpressionContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 96;
+				State = 160;
 				Match(IDENTIFIER);
 				}
 				break;
@@ -1001,57 +1341,84 @@ public partial class TruMarkTestScriptParser : Parser {
 				_localctx = new FunctionCallExpressionContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 97;
+				State = 161;
 				functionCall();
 				}
 				break;
 			case 4:
 				{
-				_localctx = new ParenthesizedExpressionContext(_localctx);
+				_localctx = new SubProgramCallExpressionContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 98;
-				Match(T__6);
-				State = 99;
-				expression(0);
-				State = 100;
-				Match(T__8);
+				State = 162;
+				subProgramCall();
 				}
 				break;
 			case 5:
 				{
+				_localctx = new HardwareModuleCallExpressionContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 163;
+				hardwareModuleCall();
+				}
+				break;
+			case 6:
+				{
+				_localctx = new CommandCallExpressionContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 164;
+				commandCall();
+				}
+				break;
+			case 7:
+				{
+				_localctx = new ParenthesizedExpressionContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 165;
+				Match(T__5);
+				State = 166;
+				expression(0);
+				State = 167;
+				Match(T__7);
+				}
+				break;
+			case 8:
+				{
 				_localctx = new NotExpressionContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 102;
-				Match(T__9);
-				State = 103;
+				State = 169;
+				Match(T__10);
+				State = 170;
 				expression(5);
 				}
 				break;
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 124;
+			State = 191;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,11,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 122;
+					State = 189;
 					ErrorHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
 					case 1:
 						{
 						_localctx = new MultiplicativeExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 106;
+						State = 173;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 107;
+						State = 174;
 						multOp();
-						State = 108;
+						State = 175;
 						expression(5);
 						}
 						break;
@@ -1059,11 +1426,11 @@ public partial class TruMarkTestScriptParser : Parser {
 						{
 						_localctx = new AdditiveExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 110;
+						State = 177;
 						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 111;
+						State = 178;
 						addOp();
-						State = 112;
+						State = 179;
 						expression(4);
 						}
 						break;
@@ -1071,11 +1438,11 @@ public partial class TruMarkTestScriptParser : Parser {
 						{
 						_localctx = new ComparisonExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 114;
+						State = 181;
 						if (!(Precpred(Context, 2))) throw new FailedPredicateException(this, "Precpred(Context, 2)");
-						State = 115;
+						State = 182;
 						compareOp();
-						State = 116;
+						State = 183;
 						expression(3);
 						}
 						break;
@@ -1083,20 +1450,20 @@ public partial class TruMarkTestScriptParser : Parser {
 						{
 						_localctx = new BooleanExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 118;
+						State = 185;
 						if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-						State = 119;
+						State = 186;
 						boolOp();
-						State = 120;
+						State = 187;
 						expression(2);
 						}
 						break;
 					}
 					} 
 				}
-				State = 126;
+				State = 193;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,11,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
 			}
 			}
 		}
@@ -1138,14 +1505,14 @@ public partial class TruMarkTestScriptParser : Parser {
 	[RuleVersion(0)]
 	public MultOpContext multOp() {
 		MultOpContext _localctx = new MultOpContext(Context, State);
-		EnterRule(_localctx, 20, RULE_multOp);
+		EnterRule(_localctx, 26, RULE_multOp);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 127;
+			State = 194;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__10) | (1L << T__11) | (1L << T__12))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__11) | (1L << T__12) | (1L << T__13))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -1192,14 +1559,14 @@ public partial class TruMarkTestScriptParser : Parser {
 	[RuleVersion(0)]
 	public AddOpContext addOp() {
 		AddOpContext _localctx = new AddOpContext(Context, State);
-		EnterRule(_localctx, 22, RULE_addOp);
+		EnterRule(_localctx, 28, RULE_addOp);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 129;
+			State = 196;
 			_la = TokenStream.LA(1);
-			if ( !(_la==T__13 || _la==T__14) ) {
+			if ( !(_la==T__14 || _la==T__15) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -1246,14 +1613,14 @@ public partial class TruMarkTestScriptParser : Parser {
 	[RuleVersion(0)]
 	public CompareOpContext compareOp() {
 		CompareOpContext _localctx = new CompareOpContext(Context, State);
-		EnterRule(_localctx, 24, RULE_compareOp);
+		EnterRule(_localctx, 30, RULE_compareOp);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 131;
+			State = 198;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << T__21))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -1301,11 +1668,11 @@ public partial class TruMarkTestScriptParser : Parser {
 	[RuleVersion(0)]
 	public BoolOpContext boolOp() {
 		BoolOpContext _localctx = new BoolOpContext(Context, State);
-		EnterRule(_localctx, 26, RULE_boolOp);
+		EnterRule(_localctx, 32, RULE_boolOp);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 133;
+			State = 200;
 			Match(BOOL_OPERATOR);
 			}
 		}
@@ -1352,12 +1719,12 @@ public partial class TruMarkTestScriptParser : Parser {
 	[RuleVersion(0)]
 	public ConstantContext constant() {
 		ConstantContext _localctx = new ConstantContext(Context, State);
-		EnterRule(_localctx, 28, RULE_constant);
+		EnterRule(_localctx, 34, RULE_constant);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 135;
+			State = 202;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTEGER) | (1L << FLOAT) | (1L << STRING) | (1L << BOOL) | (1L << NULL))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1379,9 +1746,663 @@ public partial class TruMarkTestScriptParser : Parser {
 		return _localctx;
 	}
 
+	public partial class Variant_type_parameterContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(TruMarkTestScriptParser.IDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public Variance_annotationContext variance_annotation() {
+			return GetRuleContext<Variance_annotationContext>(0);
+		}
+		public Variant_type_parameterContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_variant_type_parameter; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterVariant_type_parameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitVariant_type_parameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitVariant_type_parameter(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Variant_type_parameterContext variant_type_parameter() {
+		Variant_type_parameterContext _localctx = new Variant_type_parameterContext(Context, State);
+		EnterRule(_localctx, 36, RULE_variant_type_parameter);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 205;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==IN || _la==OUT) {
+				{
+				State = 204;
+				variance_annotation();
+				}
+			}
+
+			State = 207;
+			Match(IDENTIFIER);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Variance_annotationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN() { return GetToken(TruMarkTestScriptParser.IN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OUT() { return GetToken(TruMarkTestScriptParser.OUT, 0); }
+		public Variance_annotationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_variance_annotation; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterVariance_annotation(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitVariance_annotation(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitVariance_annotation(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Variance_annotationContext variance_annotation() {
+		Variance_annotationContext _localctx = new Variance_annotationContext(Context, State);
+		EnterRule(_localctx, 38, RULE_variance_annotation);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 209;
+			_la = TokenStream.LA(1);
+			if ( !(_la==IN || _la==OUT) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class TypeSpecifierContext : ParserRuleContext {
+		public TypeSpecifierContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_typeSpecifier; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterTypeSpecifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitTypeSpecifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTypeSpecifier(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TypeSpecifierContext typeSpecifier() {
+		TypeSpecifierContext _localctx = new TypeSpecifierContext(Context, State);
+		EnterRule(_localctx, 40, RULE_typeSpecifier);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 211;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationSpecifiersContext declarationSpecifiers() {
+			return GetRuleContext<DeclarationSpecifiersContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public InitDeclaratorListContext initDeclaratorList() {
+			return GetRuleContext<InitDeclaratorListContext>(0);
+		}
+		public DeclarationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_declaration; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DeclarationContext declaration() {
+		DeclarationContext _localctx = new DeclarationContext(Context, State);
+		EnterRule(_localctx, 42, RULE_declaration);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 213;
+			declarationSpecifiers();
+			State = 215;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
+			case 1:
+				{
+				State = 214;
+				initDeclaratorList();
+				}
+				break;
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class InitDeclaratorListContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public InitDeclaratorContext[] initDeclarator() {
+			return GetRuleContexts<InitDeclaratorContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public InitDeclaratorContext initDeclarator(int i) {
+			return GetRuleContext<InitDeclaratorContext>(i);
+		}
+		public InitDeclaratorListContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_initDeclaratorList; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterInitDeclaratorList(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitInitDeclaratorList(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInitDeclaratorList(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public InitDeclaratorListContext initDeclaratorList() {
+		InitDeclaratorListContext _localctx = new InitDeclaratorListContext(Context, State);
+		EnterRule(_localctx, 44, RULE_initDeclaratorList);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 217;
+			initDeclarator();
+			State = 222;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==T__6) {
+				{
+				{
+				State = 218;
+				Match(T__6);
+				State = 219;
+				initDeclarator();
+				}
+				}
+				State = 224;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DeclarationSpecifiersContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationSpecifierContext[] declarationSpecifier() {
+			return GetRuleContexts<DeclarationSpecifierContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationSpecifierContext declarationSpecifier(int i) {
+			return GetRuleContext<DeclarationSpecifierContext>(i);
+		}
+		public DeclarationSpecifiersContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_declarationSpecifiers; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterDeclarationSpecifiers(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitDeclarationSpecifiers(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDeclarationSpecifiers(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DeclarationSpecifiersContext declarationSpecifiers() {
+		DeclarationSpecifiersContext _localctx = new DeclarationSpecifiersContext(Context, State);
+		EnterRule(_localctx, 46, RULE_declarationSpecifiers);
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 226;
+			ErrorHandler.Sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					State = 225;
+					declarationSpecifier();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				State = 228;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,19,Context);
+			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DeclarationSpecifierContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public TypeSpecifierContext typeSpecifier() {
+			return GetRuleContext<TypeSpecifierContext>(0);
+		}
+		public DeclarationSpecifierContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_declarationSpecifier; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterDeclarationSpecifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitDeclarationSpecifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDeclarationSpecifier(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DeclarationSpecifierContext declarationSpecifier() {
+		DeclarationSpecifierContext _localctx = new DeclarationSpecifierContext(Context, State);
+		EnterRule(_localctx, 48, RULE_declarationSpecifier);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 230;
+			typeSpecifier();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class InitDeclaratorContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public DeclaratorContext declarator() {
+			return GetRuleContext<DeclaratorContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public InitializerContext initializer() {
+			return GetRuleContext<InitializerContext>(0);
+		}
+		public InitDeclaratorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_initDeclarator; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterInitDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitInitDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInitDeclarator(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public InitDeclaratorContext initDeclarator() {
+		InitDeclaratorContext _localctx = new InitDeclaratorContext(Context, State);
+		EnterRule(_localctx, 50, RULE_initDeclarator);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 232;
+			declarator();
+			State = 235;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==T__4) {
+				{
+				State = 233;
+				Match(T__4);
+				State = 234;
+				initializer();
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class InitializerContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentContext assignment() {
+			return GetRuleContext<AssignmentContext>(0);
+		}
+		public InitializerContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_initializer; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterInitializer(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitInitializer(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInitializer(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public InitializerContext initializer() {
+		InitializerContext _localctx = new InitializerContext(Context, State);
+		EnterRule(_localctx, 52, RULE_initializer);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 237;
+			assignment();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DeclaratorContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public DirectDeclaratorContext directDeclarator() {
+			return GetRuleContext<DirectDeclaratorContext>(0);
+		}
+		public DeclaratorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_declarator; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDeclarator(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DeclaratorContext declarator() {
+		DeclaratorContext _localctx = new DeclaratorContext(Context, State);
+		EnterRule(_localctx, 54, RULE_declarator);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 239;
+			directDeclarator();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DirectDeclaratorContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(TruMarkTestScriptParser.IDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public DeclaratorContext declarator() {
+			return GetRuleContext<DeclaratorContext>(0);
+		}
+		public DirectDeclaratorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_directDeclarator; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.EnterDirectDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ITruMarkTestScriptListener typedListener = listener as ITruMarkTestScriptListener;
+			if (typedListener != null) typedListener.ExitDirectDeclarator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITruMarkTestScriptVisitor<TResult> typedVisitor = visitor as ITruMarkTestScriptVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirectDeclarator(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DirectDeclaratorContext directDeclarator() {
+		DirectDeclaratorContext _localctx = new DirectDeclaratorContext(Context, State);
+		EnterRule(_localctx, 56, RULE_directDeclarator);
+		try {
+			State = 246;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case IDENTIFIER:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 241;
+				Match(IDENTIFIER);
+				}
+				break;
+			case T__5:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 242;
+				Match(T__5);
+				State = 243;
+				declarator();
+				State = 244;
+				Match(T__7);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 9: return expression_sempred((ExpressionContext)_localctx, predIndex);
+		case 12: return expression_sempred((ExpressionContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1396,47 +2417,84 @@ public partial class TruMarkTestScriptParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,30,138,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,43,249,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
-		1,0,5,0,32,8,0,10,0,12,0,35,9,0,1,0,1,0,1,1,1,1,1,1,3,1,42,8,1,1,2,1,2,
-		3,2,46,8,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,3,3,55,8,3,1,4,1,4,3,4,59,8,4,1,
-		5,1,5,5,5,63,8,5,10,5,12,5,66,9,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,3,6,75,8,
-		6,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,5,8,86,8,8,10,8,12,8,89,9,8,3,8,
-		91,8,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,105,8,9,1,9,
-		1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,123,8,
-		9,10,9,12,9,126,9,9,1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,13,1,14,1,14,
-		1,14,0,1,18,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,0,4,1,0,11,13,1,
-		0,14,15,1,0,16,21,1,0,24,28,140,0,33,1,0,0,0,2,41,1,0,0,0,4,45,1,0,0,0,
-		6,49,1,0,0,0,8,58,1,0,0,0,10,60,1,0,0,0,12,69,1,0,0,0,14,76,1,0,0,0,16,
-		80,1,0,0,0,18,104,1,0,0,0,20,127,1,0,0,0,22,129,1,0,0,0,24,131,1,0,0,0,
-		26,133,1,0,0,0,28,135,1,0,0,0,30,32,3,2,1,0,31,30,1,0,0,0,32,35,1,0,0,
-		0,33,31,1,0,0,0,33,34,1,0,0,0,34,36,1,0,0,0,35,33,1,0,0,0,36,37,5,0,0,
-		1,37,1,1,0,0,0,38,42,3,4,2,0,39,42,3,6,3,0,40,42,3,12,6,0,41,38,1,0,0,
-		0,41,39,1,0,0,0,41,40,1,0,0,0,42,3,1,0,0,0,43,46,3,14,7,0,44,46,3,16,8,
-		0,45,43,1,0,0,0,45,44,1,0,0,0,46,47,1,0,0,0,47,48,5,1,0,0,48,5,1,0,0,0,
-		49,50,5,2,0,0,50,51,3,18,9,0,51,54,3,10,5,0,52,53,5,3,0,0,53,55,3,8,4,
-		0,54,52,1,0,0,0,54,55,1,0,0,0,55,7,1,0,0,0,56,59,3,10,5,0,57,59,3,6,3,
-		0,58,56,1,0,0,0,58,57,1,0,0,0,59,9,1,0,0,0,60,64,5,4,0,0,61,63,3,2,1,0,
-		62,61,1,0,0,0,63,66,1,0,0,0,64,62,1,0,0,0,64,65,1,0,0,0,65,67,1,0,0,0,
-		66,64,1,0,0,0,67,68,5,5,0,0,68,11,1,0,0,0,69,70,5,22,0,0,70,71,3,18,9,
-		0,71,74,3,10,5,0,72,73,5,3,0,0,73,75,3,8,4,0,74,72,1,0,0,0,74,75,1,0,0,
-		0,75,13,1,0,0,0,76,77,5,30,0,0,77,78,5,6,0,0,78,79,3,18,9,0,79,15,1,0,
-		0,0,80,81,5,30,0,0,81,90,5,7,0,0,82,87,3,18,9,0,83,84,5,8,0,0,84,86,3,
-		18,9,0,85,83,1,0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,91,1,
-		0,0,0,89,87,1,0,0,0,90,82,1,0,0,0,90,91,1,0,0,0,91,92,1,0,0,0,92,93,5,
-		9,0,0,93,17,1,0,0,0,94,95,6,9,-1,0,95,105,3,28,14,0,96,105,5,30,0,0,97,
-		105,3,16,8,0,98,99,5,7,0,0,99,100,3,18,9,0,100,101,5,9,0,0,101,105,1,0,
-		0,0,102,103,5,10,0,0,103,105,3,18,9,5,104,94,1,0,0,0,104,96,1,0,0,0,104,
-		97,1,0,0,0,104,98,1,0,0,0,104,102,1,0,0,0,105,124,1,0,0,0,106,107,10,4,
-		0,0,107,108,3,20,10,0,108,109,3,18,9,5,109,123,1,0,0,0,110,111,10,3,0,
-		0,111,112,3,22,11,0,112,113,3,18,9,4,113,123,1,0,0,0,114,115,10,2,0,0,
-		115,116,3,24,12,0,116,117,3,18,9,3,117,123,1,0,0,0,118,119,10,1,0,0,119,
-		120,3,26,13,0,120,121,3,18,9,2,121,123,1,0,0,0,122,106,1,0,0,0,122,110,
-		1,0,0,0,122,114,1,0,0,0,122,118,1,0,0,0,123,126,1,0,0,0,124,122,1,0,0,
-		0,124,125,1,0,0,0,125,19,1,0,0,0,126,124,1,0,0,0,127,128,7,0,0,0,128,21,
-		1,0,0,0,129,130,7,1,0,0,130,23,1,0,0,0,131,132,7,2,0,0,132,25,1,0,0,0,
-		133,134,5,23,0,0,134,27,1,0,0,0,135,136,7,3,0,0,136,29,1,0,0,0,12,33,41,
-		45,54,58,64,74,87,90,104,122,124
+		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
+		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
+		1,0,5,0,60,8,0,10,0,12,0,63,9,0,1,0,1,0,1,1,1,1,1,1,3,1,70,8,1,1,2,1,2,
+		1,2,1,2,3,2,76,8,2,1,3,1,3,1,3,1,3,1,3,3,3,83,8,3,1,4,1,4,3,4,87,8,4,1,
+		5,1,5,5,5,91,8,5,10,5,12,5,94,9,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,3,6,103,
+		8,6,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,5,8,114,8,8,10,8,12,8,117,9,8,
+		3,8,119,8,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,5,9,129,8,9,10,9,12,9,132,
+		9,9,3,9,134,8,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,5,10,143,8,10,10,10,12,
+		10,146,9,10,3,10,148,8,10,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
+		1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,
+		172,8,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,
+		12,1,12,1,12,1,12,5,12,190,8,12,10,12,12,12,193,9,12,1,13,1,13,1,14,1,
+		14,1,15,1,15,1,16,1,16,1,17,1,17,1,18,3,18,206,8,18,1,18,1,18,1,19,1,19,
+		1,20,1,20,1,21,1,21,3,21,216,8,21,1,22,1,22,1,22,5,22,221,8,22,10,22,12,
+		22,224,9,22,1,23,4,23,227,8,23,11,23,12,23,228,1,24,1,24,1,25,1,25,1,25,
+		3,25,236,8,25,1,26,1,26,1,27,1,27,1,28,1,28,1,28,1,28,1,28,3,28,247,8,
+		28,1,28,0,1,24,29,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,
+		38,40,42,44,46,48,50,52,54,56,0,6,1,0,12,14,1,0,15,16,1,0,17,22,1,0,33,
+		37,1,0,29,30,1,0,23,27,252,0,61,1,0,0,0,2,69,1,0,0,0,4,75,1,0,0,0,6,77,
+		1,0,0,0,8,86,1,0,0,0,10,88,1,0,0,0,12,97,1,0,0,0,14,104,1,0,0,0,16,108,
+		1,0,0,0,18,122,1,0,0,0,20,137,1,0,0,0,22,151,1,0,0,0,24,171,1,0,0,0,26,
+		194,1,0,0,0,28,196,1,0,0,0,30,198,1,0,0,0,32,200,1,0,0,0,34,202,1,0,0,
+		0,36,205,1,0,0,0,38,209,1,0,0,0,40,211,1,0,0,0,42,213,1,0,0,0,44,217,1,
+		0,0,0,46,226,1,0,0,0,48,230,1,0,0,0,50,232,1,0,0,0,52,237,1,0,0,0,54,239,
+		1,0,0,0,56,246,1,0,0,0,58,60,3,2,1,0,59,58,1,0,0,0,60,63,1,0,0,0,61,59,
+		1,0,0,0,61,62,1,0,0,0,62,64,1,0,0,0,63,61,1,0,0,0,64,65,5,0,0,1,65,1,1,
+		0,0,0,66,70,3,4,2,0,67,70,3,6,3,0,68,70,3,12,6,0,69,66,1,0,0,0,69,67,1,
+		0,0,0,69,68,1,0,0,0,70,3,1,0,0,0,71,76,3,42,21,0,72,76,3,14,7,0,73,76,
+		3,16,8,0,74,76,3,18,9,0,75,71,1,0,0,0,75,72,1,0,0,0,75,73,1,0,0,0,75,74,
+		1,0,0,0,76,5,1,0,0,0,77,78,5,1,0,0,78,79,3,24,12,0,79,82,3,10,5,0,80,81,
+		5,2,0,0,81,83,3,8,4,0,82,80,1,0,0,0,82,83,1,0,0,0,83,7,1,0,0,0,84,87,3,
+		10,5,0,85,87,3,6,3,0,86,84,1,0,0,0,86,85,1,0,0,0,87,9,1,0,0,0,88,92,5,
+		3,0,0,89,91,3,2,1,0,90,89,1,0,0,0,91,94,1,0,0,0,92,90,1,0,0,0,92,93,1,
+		0,0,0,93,95,1,0,0,0,94,92,1,0,0,0,95,96,5,4,0,0,96,11,1,0,0,0,97,98,5,
+		28,0,0,98,99,3,24,12,0,99,102,3,10,5,0,100,101,5,2,0,0,101,103,3,8,4,0,
+		102,100,1,0,0,0,102,103,1,0,0,0,103,13,1,0,0,0,104,105,5,39,0,0,105,106,
+		5,5,0,0,106,107,3,24,12,0,107,15,1,0,0,0,108,109,5,40,0,0,109,118,5,6,
+		0,0,110,115,3,24,12,0,111,112,5,7,0,0,112,114,3,24,12,0,113,111,1,0,0,
+		0,114,117,1,0,0,0,115,113,1,0,0,0,115,116,1,0,0,0,116,119,1,0,0,0,117,
+		115,1,0,0,0,118,110,1,0,0,0,118,119,1,0,0,0,119,120,1,0,0,0,120,121,5,
+		8,0,0,121,17,1,0,0,0,122,123,5,31,0,0,123,124,5,40,0,0,124,133,5,6,0,0,
+		125,130,3,24,12,0,126,127,5,7,0,0,127,129,3,24,12,0,128,126,1,0,0,0,129,
+		132,1,0,0,0,130,128,1,0,0,0,130,131,1,0,0,0,131,134,1,0,0,0,132,130,1,
+		0,0,0,133,125,1,0,0,0,133,134,1,0,0,0,134,135,1,0,0,0,135,136,5,8,0,0,
+		136,19,1,0,0,0,137,138,5,41,0,0,138,147,5,6,0,0,139,144,3,24,12,0,140,
+		141,5,7,0,0,141,143,3,24,12,0,142,140,1,0,0,0,143,146,1,0,0,0,144,142,
+		1,0,0,0,144,145,1,0,0,0,145,148,1,0,0,0,146,144,1,0,0,0,147,139,1,0,0,
+		0,147,148,1,0,0,0,148,149,1,0,0,0,149,150,5,8,0,0,150,21,1,0,0,0,151,152,
+		5,40,0,0,152,153,5,9,0,0,153,154,5,35,0,0,154,155,5,35,0,0,155,156,5,35,
+		0,0,156,157,5,10,0,0,157,23,1,0,0,0,158,159,6,12,-1,0,159,172,3,34,17,
+		0,160,172,5,39,0,0,161,172,3,16,8,0,162,172,3,18,9,0,163,172,3,20,10,0,
+		164,172,3,22,11,0,165,166,5,6,0,0,166,167,3,24,12,0,167,168,5,8,0,0,168,
+		172,1,0,0,0,169,170,5,11,0,0,170,172,3,24,12,5,171,158,1,0,0,0,171,160,
+		1,0,0,0,171,161,1,0,0,0,171,162,1,0,0,0,171,163,1,0,0,0,171,164,1,0,0,
+		0,171,165,1,0,0,0,171,169,1,0,0,0,172,191,1,0,0,0,173,174,10,4,0,0,174,
+		175,3,26,13,0,175,176,3,24,12,5,176,190,1,0,0,0,177,178,10,3,0,0,178,179,
+		3,28,14,0,179,180,3,24,12,4,180,190,1,0,0,0,181,182,10,2,0,0,182,183,3,
+		30,15,0,183,184,3,24,12,3,184,190,1,0,0,0,185,186,10,1,0,0,186,187,3,32,
+		16,0,187,188,3,24,12,2,188,190,1,0,0,0,189,173,1,0,0,0,189,177,1,0,0,0,
+		189,181,1,0,0,0,189,185,1,0,0,0,190,193,1,0,0,0,191,189,1,0,0,0,191,192,
+		1,0,0,0,192,25,1,0,0,0,193,191,1,0,0,0,194,195,7,0,0,0,195,27,1,0,0,0,
+		196,197,7,1,0,0,197,29,1,0,0,0,198,199,7,2,0,0,199,31,1,0,0,0,200,201,
+		5,32,0,0,201,33,1,0,0,0,202,203,7,3,0,0,203,35,1,0,0,0,204,206,3,38,19,
+		0,205,204,1,0,0,0,205,206,1,0,0,0,206,207,1,0,0,0,207,208,5,39,0,0,208,
+		37,1,0,0,0,209,210,7,4,0,0,210,39,1,0,0,0,211,212,7,5,0,0,212,41,1,0,0,
+		0,213,215,3,46,23,0,214,216,3,44,22,0,215,214,1,0,0,0,215,216,1,0,0,0,
+		216,43,1,0,0,0,217,222,3,50,25,0,218,219,5,7,0,0,219,221,3,50,25,0,220,
+		218,1,0,0,0,221,224,1,0,0,0,222,220,1,0,0,0,222,223,1,0,0,0,223,45,1,0,
+		0,0,224,222,1,0,0,0,225,227,3,48,24,0,226,225,1,0,0,0,227,228,1,0,0,0,
+		228,226,1,0,0,0,228,229,1,0,0,0,229,47,1,0,0,0,230,231,3,40,20,0,231,49,
+		1,0,0,0,232,235,3,54,27,0,233,234,5,5,0,0,234,236,3,52,26,0,235,233,1,
+		0,0,0,235,236,1,0,0,0,236,51,1,0,0,0,237,238,3,14,7,0,238,53,1,0,0,0,239,
+		240,3,56,28,0,240,55,1,0,0,0,241,247,5,39,0,0,242,243,5,6,0,0,243,244,
+		3,54,27,0,244,245,5,8,0,0,245,247,1,0,0,0,246,241,1,0,0,0,246,242,1,0,
+		0,0,247,57,1,0,0,0,22,61,69,75,82,86,92,102,115,118,130,133,144,147,171,
+		189,191,205,215,222,228,235,246
 	};
 
 	public static readonly ATN _ATN =

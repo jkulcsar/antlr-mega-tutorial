@@ -1,3 +1,7 @@
+// just a comment:
+// testing the while-loop implementation
+// with a simple counter
+
 int $x = 12
 int $i = 0
 

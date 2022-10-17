@@ -74,17 +74,35 @@ public interface ITruMarkTestScriptVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitWhileBlock([NotNull] TruMarkTestScriptParser.WhileBlockContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.assignement"/>.
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.assignment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitAssignement([NotNull] TruMarkTestScriptParser.AssignementContext context);
+	Result VisitAssignment([NotNull] TruMarkTestScriptParser.AssignmentContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.functionCall"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitFunctionCall([NotNull] TruMarkTestScriptParser.FunctionCallContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.subProgramCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSubProgramCall([NotNull] TruMarkTestScriptParser.SubProgramCallContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.hardwareModuleCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitHardwareModuleCall([NotNull] TruMarkTestScriptParser.HardwareModuleCallContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.commandCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCommandCall([NotNull] TruMarkTestScriptParser.CommandCallContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>parenthesizedExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -107,12 +125,26 @@ public interface ITruMarkTestScriptVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitAdditiveExpression([NotNull] TruMarkTestScriptParser.AdditiveExpressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>commandCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCommandCallExpression([NotNull] TruMarkTestScriptParser.CommandCallExpressionContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>identifierExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIdentifierExpression([NotNull] TruMarkTestScriptParser.IdentifierExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>subProgramCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSubProgramCallExpression([NotNull] TruMarkTestScriptParser.SubProgramCallExpressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>functionCallExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -149,6 +181,13 @@ public interface ITruMarkTestScriptVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitBooleanExpression([NotNull] TruMarkTestScriptParser.BooleanExpressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>hardwareModuleCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitHardwareModuleCallExpression([NotNull] TruMarkTestScriptParser.HardwareModuleCallExpressionContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.multOp"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -178,4 +217,70 @@ public interface ITruMarkTestScriptVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitConstant([NotNull] TruMarkTestScriptParser.ConstantContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.variant_type_parameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitVariant_type_parameter([NotNull] TruMarkTestScriptParser.Variant_type_parameterContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.variance_annotation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitVariance_annotation([NotNull] TruMarkTestScriptParser.Variance_annotationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.typeSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTypeSpecifier([NotNull] TruMarkTestScriptParser.TypeSpecifierContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.declaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclaration([NotNull] TruMarkTestScriptParser.DeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclaratorList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInitDeclaratorList([NotNull] TruMarkTestScriptParser.InitDeclaratorListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifiers"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclarationSpecifiers([NotNull] TruMarkTestScriptParser.DeclarationSpecifiersContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclarationSpecifier([NotNull] TruMarkTestScriptParser.DeclarationSpecifierContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInitDeclarator([NotNull] TruMarkTestScriptParser.InitDeclaratorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.initializer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInitializer([NotNull] TruMarkTestScriptParser.InitializerContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.declarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclarator([NotNull] TruMarkTestScriptParser.DeclaratorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TruMarkTestScriptParser.directDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirectDeclarator([NotNull] TruMarkTestScriptParser.DirectDeclaratorContext context);
 }

@@ -9,7 +9,7 @@ public class MyTruMarkTestScriptVisitor : TruMarkTestScriptBaseVisitor<object?>
         return VisitChildren(context);
     }
 
-    public override object? VisitAssignement(TruMarkTestScriptParser.AssignementContext context)
+    public override object? VisitAssignment(TruMarkTestScriptParser.AssignmentContext context)
     {
         var variableName = context.IDENTIFIER().GetText();
         
@@ -140,7 +140,7 @@ public class MyTruMarkTestScriptVisitor : TruMarkTestScriptBaseVisitor<object?>
             "==" => Equals(left, right),
             "!=" => !Equals(left, right),
             "<" => LessThan(left, right),
-            //">" => GreaterThan(left, right),
+            ">" => GreaterThan(left, right),
             //"<=" => LessThanOrEqual(left, right),
             //">=" => GreaterThanOrEqual(left, right),
             _ => throw new NotImplementedException()
@@ -158,6 +158,22 @@ public class MyTruMarkTestScriptVisitor : TruMarkTestScriptBaseVisitor<object?>
         if (left is float leftFloat && right is float rightFloat)
         {
             return leftFloat < rightFloat;
+        }
+        
+        throw new NotImplementedException();
+    }
+
+    private object? GreaterThan(object? left, object? right)
+    {
+
+        if (left is int leftInt && right is int rightInt)
+        {
+            return leftInt > rightInt;
+        }
+
+        if (left is float leftFloat && right is float rightFloat)
+        {
+            return leftFloat > rightFloat;
         }
         
         throw new NotImplementedException();

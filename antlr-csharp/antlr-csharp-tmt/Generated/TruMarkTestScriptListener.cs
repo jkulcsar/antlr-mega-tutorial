@@ -101,15 +101,15 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitWhileBlock([NotNull] TruMarkTestScriptParser.WhileBlockContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.assignement"/>.
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.assignment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAssignement([NotNull] TruMarkTestScriptParser.AssignementContext context);
+	void EnterAssignment([NotNull] TruMarkTestScriptParser.AssignmentContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.assignement"/>.
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.assignment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAssignement([NotNull] TruMarkTestScriptParser.AssignementContext context);
+	void ExitAssignment([NotNull] TruMarkTestScriptParser.AssignmentContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.functionCall"/>.
 	/// </summary>
@@ -120,6 +120,36 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFunctionCall([NotNull] TruMarkTestScriptParser.FunctionCallContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.subProgramCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSubProgramCall([NotNull] TruMarkTestScriptParser.SubProgramCallContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.subProgramCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSubProgramCall([NotNull] TruMarkTestScriptParser.SubProgramCallContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.hardwareModuleCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterHardwareModuleCall([NotNull] TruMarkTestScriptParser.HardwareModuleCallContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.hardwareModuleCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitHardwareModuleCall([NotNull] TruMarkTestScriptParser.HardwareModuleCallContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.commandCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCommandCall([NotNull] TruMarkTestScriptParser.CommandCallContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.commandCall"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCommandCall([NotNull] TruMarkTestScriptParser.CommandCallContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>parenthesizedExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -157,6 +187,18 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitAdditiveExpression([NotNull] TruMarkTestScriptParser.AdditiveExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>commandCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCommandCallExpression([NotNull] TruMarkTestScriptParser.CommandCallExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>commandCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCommandCallExpression([NotNull] TruMarkTestScriptParser.CommandCallExpressionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>identifierExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
 	/// </summary>
@@ -168,6 +210,18 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitIdentifierExpression([NotNull] TruMarkTestScriptParser.IdentifierExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>subProgramCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSubProgramCallExpression([NotNull] TruMarkTestScriptParser.SubProgramCallExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>subProgramCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSubProgramCallExpression([NotNull] TruMarkTestScriptParser.SubProgramCallExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>functionCallExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -229,6 +283,18 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitBooleanExpression([NotNull] TruMarkTestScriptParser.BooleanExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>hardwareModuleCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterHardwareModuleCallExpression([NotNull] TruMarkTestScriptParser.HardwareModuleCallExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>hardwareModuleCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitHardwareModuleCallExpression([NotNull] TruMarkTestScriptParser.HardwareModuleCallExpressionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.multOp"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -278,4 +344,114 @@ public interface ITruMarkTestScriptListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitConstant([NotNull] TruMarkTestScriptParser.ConstantContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.variant_type_parameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterVariant_type_parameter([NotNull] TruMarkTestScriptParser.Variant_type_parameterContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.variant_type_parameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitVariant_type_parameter([NotNull] TruMarkTestScriptParser.Variant_type_parameterContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.variance_annotation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterVariance_annotation([NotNull] TruMarkTestScriptParser.Variance_annotationContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.variance_annotation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitVariance_annotation([NotNull] TruMarkTestScriptParser.Variance_annotationContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.typeSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterTypeSpecifier([NotNull] TruMarkTestScriptParser.TypeSpecifierContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.typeSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitTypeSpecifier([NotNull] TruMarkTestScriptParser.TypeSpecifierContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDeclaration([NotNull] TruMarkTestScriptParser.DeclarationContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDeclaration([NotNull] TruMarkTestScriptParser.DeclarationContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclaratorList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInitDeclaratorList([NotNull] TruMarkTestScriptParser.InitDeclaratorListContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclaratorList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInitDeclaratorList([NotNull] TruMarkTestScriptParser.InitDeclaratorListContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifiers"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDeclarationSpecifiers([NotNull] TruMarkTestScriptParser.DeclarationSpecifiersContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifiers"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDeclarationSpecifiers([NotNull] TruMarkTestScriptParser.DeclarationSpecifiersContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDeclarationSpecifier([NotNull] TruMarkTestScriptParser.DeclarationSpecifierContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDeclarationSpecifier([NotNull] TruMarkTestScriptParser.DeclarationSpecifierContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInitDeclarator([NotNull] TruMarkTestScriptParser.InitDeclaratorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInitDeclarator([NotNull] TruMarkTestScriptParser.InitDeclaratorContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initializer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInitializer([NotNull] TruMarkTestScriptParser.InitializerContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initializer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInitializer([NotNull] TruMarkTestScriptParser.InitializerContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDeclarator([NotNull] TruMarkTestScriptParser.DeclaratorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDeclarator([NotNull] TruMarkTestScriptParser.DeclaratorContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.directDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDirectDeclarator([NotNull] TruMarkTestScriptParser.DirectDeclaratorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.directDeclarator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDirectDeclarator([NotNull] TruMarkTestScriptParser.DirectDeclaratorContext context);
 }

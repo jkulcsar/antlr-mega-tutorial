@@ -120,17 +120,17 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitWhileBlock([NotNull] TruMarkTestScriptParser.WhileBlockContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.assignement"/>.
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.assignment"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAssignement([NotNull] TruMarkTestScriptParser.AssignementContext context) { }
+	public virtual void EnterAssignment([NotNull] TruMarkTestScriptParser.AssignmentContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.assignement"/>.
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.assignment"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAssignement([NotNull] TruMarkTestScriptParser.AssignementContext context) { }
+	public virtual void ExitAssignment([NotNull] TruMarkTestScriptParser.AssignmentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.functionCall"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -143,6 +143,42 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctionCall([NotNull] TruMarkTestScriptParser.FunctionCallContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.subProgramCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSubProgramCall([NotNull] TruMarkTestScriptParser.SubProgramCallContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.subProgramCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSubProgramCall([NotNull] TruMarkTestScriptParser.SubProgramCallContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.hardwareModuleCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterHardwareModuleCall([NotNull] TruMarkTestScriptParser.HardwareModuleCallContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.hardwareModuleCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitHardwareModuleCall([NotNull] TruMarkTestScriptParser.HardwareModuleCallContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.commandCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCommandCall([NotNull] TruMarkTestScriptParser.CommandCallContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.commandCall"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCommandCall([NotNull] TruMarkTestScriptParser.CommandCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>parenthesizedExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -186,6 +222,20 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitAdditiveExpression([NotNull] TruMarkTestScriptParser.AdditiveExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>commandCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCommandCallExpression([NotNull] TruMarkTestScriptParser.CommandCallExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>commandCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCommandCallExpression([NotNull] TruMarkTestScriptParser.CommandCallExpressionContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>identifierExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -199,6 +249,20 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIdentifierExpression([NotNull] TruMarkTestScriptParser.IdentifierExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>subProgramCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSubProgramCallExpression([NotNull] TruMarkTestScriptParser.SubProgramCallExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>subProgramCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSubProgramCallExpression([NotNull] TruMarkTestScriptParser.SubProgramCallExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>functionCallExpression</c>
 	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
@@ -270,6 +334,20 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitBooleanExpression([NotNull] TruMarkTestScriptParser.BooleanExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>hardwareModuleCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterHardwareModuleCallExpression([NotNull] TruMarkTestScriptParser.HardwareModuleCallExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>hardwareModuleCallExpression</c>
+	/// labeled alternative in <see cref="TruMarkTestScriptParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitHardwareModuleCallExpression([NotNull] TruMarkTestScriptParser.HardwareModuleCallExpressionContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.multOp"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -329,6 +407,138 @@ public partial class TruMarkTestScriptBaseListener : ITruMarkTestScriptListener 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitConstant([NotNull] TruMarkTestScriptParser.ConstantContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.variant_type_parameter"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterVariant_type_parameter([NotNull] TruMarkTestScriptParser.Variant_type_parameterContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.variant_type_parameter"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitVariant_type_parameter([NotNull] TruMarkTestScriptParser.Variant_type_parameterContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.variance_annotation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterVariance_annotation([NotNull] TruMarkTestScriptParser.Variance_annotationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.variance_annotation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitVariance_annotation([NotNull] TruMarkTestScriptParser.Variance_annotationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.typeSpecifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterTypeSpecifier([NotNull] TruMarkTestScriptParser.TypeSpecifierContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.typeSpecifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitTypeSpecifier([NotNull] TruMarkTestScriptParser.TypeSpecifierContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDeclaration([NotNull] TruMarkTestScriptParser.DeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDeclaration([NotNull] TruMarkTestScriptParser.DeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclaratorList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInitDeclaratorList([NotNull] TruMarkTestScriptParser.InitDeclaratorListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclaratorList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInitDeclaratorList([NotNull] TruMarkTestScriptParser.InitDeclaratorListContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifiers"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDeclarationSpecifiers([NotNull] TruMarkTestScriptParser.DeclarationSpecifiersContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifiers"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDeclarationSpecifiers([NotNull] TruMarkTestScriptParser.DeclarationSpecifiersContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDeclarationSpecifier([NotNull] TruMarkTestScriptParser.DeclarationSpecifierContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarationSpecifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDeclarationSpecifier([NotNull] TruMarkTestScriptParser.DeclarationSpecifierContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInitDeclarator([NotNull] TruMarkTestScriptParser.InitDeclaratorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initDeclarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInitDeclarator([NotNull] TruMarkTestScriptParser.InitDeclaratorContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.initializer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInitializer([NotNull] TruMarkTestScriptParser.InitializerContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.initializer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInitializer([NotNull] TruMarkTestScriptParser.InitializerContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.declarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDeclarator([NotNull] TruMarkTestScriptParser.DeclaratorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.declarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDeclarator([NotNull] TruMarkTestScriptParser.DeclaratorContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TruMarkTestScriptParser.directDeclarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDirectDeclarator([NotNull] TruMarkTestScriptParser.DirectDeclaratorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TruMarkTestScriptParser.directDeclarator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDirectDeclarator([NotNull] TruMarkTestScriptParser.DirectDeclaratorContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
