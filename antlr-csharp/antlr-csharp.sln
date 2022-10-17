@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antlr-csharp-tests", "antlr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antlr-csharp-simple", "antlr-csharp-simple\antlr-csharp-simple.csproj", "{BEDC6FE5-DC54-410A-96AC-0194C48F7E76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antlr-csharp-tmt", "antlr-csharp-tmt\antlr-csharp-tmt.csproj", "{37063586-4BC0-4486-9050-AA5FB079A3A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{BEDC6FE5-DC54-410A-96AC-0194C48F7E76}.Release|x64.Build.0 = Release|Any CPU
 		{BEDC6FE5-DC54-410A-96AC-0194C48F7E76}.Release|x86.ActiveCfg = Release|Any CPU
 		{BEDC6FE5-DC54-410A-96AC-0194C48F7E76}.Release|x86.Build.0 = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|x64.Build.0 = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Debug|x86.Build.0 = Debug|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|x64.Build.0 = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|x86.ActiveCfg = Release|Any CPU
+		{37063586-4BC0-4486-9050-AA5FB079A3A3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
