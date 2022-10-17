@@ -1,0 +1,93 @@
+//Arithmetik
+int $a = 0
+int $b = 2
+int $c = 4
+int $index = 0
+$a = 1 + 2
+if($a <> 3)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 5 - 1
+if($a <> 4)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 5 * 2
+if($a <> 10)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 18/2
+if($a <> 9)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+//variabeln
+$a = $b + $c
+if($a <> 6)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = $c - $b
+if($a <> 2)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = $b * $c
+if($a <> 8)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = $c / $b
+if($a <> 2)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+//loops
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b + $c
+}
+if($b <> 42)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 50
+$index = 0
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b - $c
+}
+if($b <> 10)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 1024
+$c = 2
+$index = 0
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b / $c
+}
+if($b <> 1)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 2
+$index = 0
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b * $c
+}
+if($b <> 2048)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}

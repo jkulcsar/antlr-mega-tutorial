@@ -1,0 +1,28 @@
+//input Variabeln
+input string $String = ""
+input int $Int = 0
+input float $Float = 0
+input bool $Bool = false
+
+//output Variabeln
+output string $String_o = ""
+output int $Int_o = 0
+output float $Float_o = 0
+output bool $Bool_o = false
+
+while($Bool)
+{
+				
+	$Bool = false
+	$Bool_o = $Bool
+}
+
+if ($Int<10)
+{
+	$Int = $Int * 2
+	$Int_o = $Int
+}else{
+	$Float_o = $Int * $Float
+}
+
+$String_o = Concat($String, "_done")

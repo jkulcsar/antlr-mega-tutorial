@@ -1,0 +1,72 @@
+//#############################################################################################################
+//Dieses Testprogramm soll alle Funktionalitäten der Testautomation abdecken.
+//Mit Hilfe dieses Testprogramms soll der Abnahmetest gemacht werden können.
+//TTM3: 
+//TruDiag: 
+//OPC-UA: 
+//#############################################################################################################
+//-------------------------------------------------------------------------------------------------------------
+//var Test
+string $String = ""
+int $Int = 0
+float $Float = 0
+bool $Bool = false
+
+string $String_o = ""
+int $Int_o = 0
+float $Float_o = 0
+bool $Bool_o = false
+
+int $CompareIndex = 2
+
+$String = "Hello World!"
+$Int = 8
+$Float = 0.08
+$Bool = true
+
+call 00-Abnahmetest_Variablen(in $String, in $Int, in $Float, in $Bool, out $String_o, out $Int_o, out $Float_o, out $Bool_o)			// 
+$CompareIndex = Compare($String_o, "Hello World!_done")
+if($CompareIndex == 0)
+{
+}else{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler["Rückgabe String nicht richtig"	""	"1000"]	)
+}
+if($Int_o == 16)
+{
+}else{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler["Rückgabe Int nicht richtig"	""	"1000"]	)
+}
+if($Float_o == 1.28)
+{
+}else{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler["Rückgabe Float nicht richtig"	""	"1000"]	)
+}
+while($Bool_o)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler["Rückgabe Bool nicht richtig"	""	"1000"]	)
+	goto LABEL
+}
+
+goto LABEL
+call 00-Abnahmetest_Arithmetik_INT()			// 
+call 00-Abnahmetest_Arithmetik_FLOAT()			// 
+LABEL:
+
+//-------------------------------------------------------------------------------------------------------------
+call 00-Abnahmetest_Arithmetik_INT()			// 
+call 00-Abnahmetest_Arithmetik_FLOAT()			// 
+//-------------------------------------------------------------------------------------------------------------
+//Messwert aufnehmen
+InternSoftware_V01::Logging.Logging_Linear2(cmd_empty["1;60;1000"	""	"99999000"]	)
+InternSoftware_V01::Logging.Logging_Linear2(cmd_empty["2;120;500"	""	"99999000"]	)
+call 00-Abnahmetest_Messwert()			// 
+//-------------------------------------------------------------------------------------------------------------
+//Funktion mit mehreren Kommandos
+InternSoftware_V01::Software.Kommando_Test(cmd_Kommando1[""	"Rueckgabe:Kommando1"	"2000"]
+                                           cmd_Kommando2[""	"Rueckgabe:Kommando2"	"2000"]
+                                           cmd_Kommando3[""	"Rueckgabe:Kommando3"	"2000"]	)
+//-------------------------------------------------------------------------------------------------------------
+//so kann das while schleifen Problem reproduziert werden
+call 00-Abnahmetest_Whileschleifenproblem()			// 
+call 00-Abnahmetest_Whileschleifenproblem()			// 
+call 00-Abnahmetest_Whileschleifenproblem()			// 

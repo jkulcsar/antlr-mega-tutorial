@@ -1,0 +1,99 @@
+//Arithmetik
+float $a = 0
+float $b = 2.25
+float $c = 4.36
+float $index = 0
+$a = 1.11 + 2.22
+if($a <> 3.33)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 5.55 - 1.11
+if($a <> 4.44)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 5.12 * 2.24
+if($a <> 11.4688)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = 7.2025 / 2.15
+if($a <> 3.35)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+//variabeln
+$a = $b + $c
+if($a <> 6.61)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = $c - $b
+if($a <> 2.11)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$a = $b * $c
+if($a <> 9.81)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+$c = 16.644
+$b = 3.65
+$a = $c / $b
+if($a <> 4.56)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+//loops
+$b = 2.35
+$c = 0.01
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b + $c
+}
+if($b <> 2.45)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 4.67
+$c = 0.06
+$index = 0
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b - $c
+}
+if($b <> 4.07)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 0.12
+$c = 0.1
+$index = 0
+while($index < 10)
+{
+	$index = $index + 1
+	$b = $b / $c
+}
+if($b <> 1200000000)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
+
+$b = 95500000000
+$c = 0.1
+$index = 0
+while($index < 9.55)
+{
+	$index = $index + 1
+	$b = $b * $c
+}
+if($b <> 2048)
+{
+	InternSoftware_V01::FehlerHandling.Fehler(cmd_SetzeFehler[""	""	"1000"]	)
+}
