@@ -46,7 +46,7 @@ expression
     
 multOp: '*' | '/' | '%';
 addOp: '+' | '-';
-compareOp: '<' | '>' | '<=' | '>=' | '==' | '!=';
+compareOp: '<' | '>' | '<=' | '>=' | '==' | '!=' | '<>';
 boolOp: BOOL_OPERATOR;
 
 BOOL_OPERATOR: 'and' | 'or' | 'xor';
@@ -65,7 +65,7 @@ WS
    
 IDENTIFIER: [$a-zA-Z_][$a-zA-Z0-9_]*;
 FUNCTIONIDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
-HARDWAREMODULEIDENTIFIER: [a-zA-Z:.][a-zA-Z0-9:.]*;
+HARDWAREMODULEIDENTIFIER: [a-zA-Z^:.][a-zA-Z0-9^:.]*;
 
 variant_type_parameter
 	: variance_annotation? IDENTIFIER

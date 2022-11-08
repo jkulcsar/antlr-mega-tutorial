@@ -139,6 +139,7 @@ public class MyTruMarkTestScriptVisitor : TruMarkTestScriptBaseVisitor<object?>
         {
             "==" => Equals(left, right),
             "!=" => !Equals(left, right),
+            "<>" => !Equals(left, right),
             "<" => LessThan(left, right),
             ">" => GreaterThan(left, right),
             //"<=" => LessThanOrEqual(left, right),
